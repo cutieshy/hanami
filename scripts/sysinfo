@@ -1,0 +1,5 @@
+#!/bin/bash
+printf "Gathering system information..."
+sleep 1
+clear
+exec neofetch
