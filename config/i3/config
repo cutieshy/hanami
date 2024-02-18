@@ -2,15 +2,18 @@ set $mod Mod1
 set $sup Mod4
 for_window [class="^.*"] border pixel 0
 font pango:Palm OS Regular 11
-exec --no-startup-id feh --bg-scale ~/img/wall/makima.bmp
+exec --no-startup-id feh --bg-scale ~/img/wall/appledim.png
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.scripts/lock.sh --nofork
-exec --no-startup-id xautolock -time 15 -locker "i3lock -c 000000"
+exec --no-startup-id xautolock -time 3 -locker "i3lock --color 000000"
+exec_always --no-startup-id timeshift-launcher
+exec_always --no-startup-id killall -q polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 floating_modifier $sup
 floating_maximum_size 1820x980
 # [Bindings]
 bindsym $sup+Return exec kitty
 bindsym $sup+Shift+q kill
-bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Palm OS-14'
+bindsym $mod+space exec --no-startup-id rofi -show run
 bindsym $sup+Tab focus next
 bindsym $sup+Shift+Tab focus down
 bindsym $mod+Tab workspace next
@@ -37,19 +40,6 @@ bindsym Print exec --no-startup-id maim -su | xclip -selection clipboard -t imag
 bindsym $sup+o exec ~/.scripts/ocr.sh
 bindsym $sup+c exec colorpicker | xclip -selection clipboard -f
 
-# [i3bar]
-bar	{
-	status_command i3status
-	position bottom
-	tray_output none
-	workspace_buttons no
-	binding_mode_indicator no
-	colors {
-	separator #944a4a
-	}
-	font pango:Palm OS 14
-	}
-
 # [Window Movement]
 bindsym $sup+Left move left
 bindsym $sup+Right move right
@@ -75,7 +65,6 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 
 # [Window Defaults]
-assign [class="^gqrx$"] $ws3
 for_window [class="^Minecraft_Updater$"] floating enable
 for_window [class="^Minecraft$"] floating enable
 for_window [class="^Steam"] floating enable
@@ -87,3 +76,4 @@ for_window [class="^gqrx$"] resize set 1390 880
 for_window [class="^File-roller$"] resize set 190 750
 for_window [class="^feh"] floating enable
 for_window [class="^64gram"] resize set 510 980
+for_window [class="^Blueberry"] floating enable
