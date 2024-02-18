@@ -1,3 +1,3 @@
 #!/bin/bash
 systemctl suspend
-i3lock -i /home/shy/img/wall/makimablur.png
+i3lock --color 000000

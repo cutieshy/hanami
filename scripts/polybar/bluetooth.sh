@@ -1,12 +1,12 @@
 #!/bin/sh
 if [ $(echo info | bluetoothctl | grep 'Connected: yes' | wc -c) -eq 16 ]
 then
-	echo "Connected"
+	echo "%{F#69a5ff}"
 else
 if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 14 ]
 then
-	echo "ON"
+	echo "%{F#FF4747}"
 else
-	echo "OFF"
+	echo ""
 fi
 fi
